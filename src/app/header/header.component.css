@@ -3,6 +3,10 @@ header{
 
 
 }
+.fa{
+    color:black;
+    font-size: 1.6rem;
+}
 .navbar{
     background-color:transparent;
     /* background-color: #5b6467; */

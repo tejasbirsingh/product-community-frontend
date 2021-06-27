@@ -6,6 +6,8 @@ import { throwError } from 'rxjs';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { CommentPayload } from 'src/app/comment/comment.payload';
 import { CommentService } from 'src/app/comment/comment.service';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-view-post',
@@ -16,6 +18,7 @@ export class ViewPostComponent implements OnInit {
 
   postId: number;
   post: PostModel;
+  faUser = faUser;
   commentForm: FormGroup;
   commentPayload: CommentPayload;
   comments: CommentPayload[];
@@ -29,7 +32,11 @@ export class ViewPostComponent implements OnInit {
     });
     this.commentPayload = {
       text: '',
-      postId: this.postId
+      postId: this.postId,
+      id:0,
+      upVote:undefined,
+      downVote:undefined,
+      voteCount:0
     };
   }
 

@@ -9,6 +9,7 @@ import { ListSubredditsComponent } from './subreddit/list-subreddits/list-subred
 import { ViewPostComponent } from './post/view-post/view-post.component';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
 import { AuthGuard } from './auth/auth.guard';
+import { SubredditPostsComponent } from './subreddit/subreddit-posts/subreddit-posts.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,8 @@ const routes: Routes = [
   { path: 'sign-up', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'view-subreddit/:id', component: ListSubredditsComponent },
+  // new addition
+  {path:'by-subreddit/:id', component: SubredditPostsComponent}
 
 ];
 

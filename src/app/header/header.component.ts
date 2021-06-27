@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from '../auth/shared/auth.service';
 import { Router } from '@angular/router';
-
+import { faPen } from '@fortawesome/free-solid-svg-icons';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   faUser = faUser;
   isLoggedIn: boolean;
   username: string;
+  faPen = faPen;
 
   constructor(private authService: AuthService, private router: Router) { }
 
