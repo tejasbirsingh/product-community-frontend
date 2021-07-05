@@ -1,0 +1,13 @@
+mat-form-field {
+    width: 100%;
+    color: black;
+}
+
+.inp {
+    padding: 10px;
+    color: black;
+}
+
+.mat-card {
+    background-color: rgb(81, 81, 194)
+}

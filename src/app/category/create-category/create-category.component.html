@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="create-category-container">
+            <form class="question-form" [formGroup]="createCategoryForm" (ngSubmit)="createCategory()">
+                <div class="form-group">
+                    <div class="create-category-heading">Create Category</div>
+                    <hr />
+                    <input type="text" [formControlName]="'title'" class="form-control" style="margin-top: 5px" placeholder="Title" [ngClass]="{ 'is-invalid': (isFormSubmitted && createCategoryForm.controls.title.errors) || (!createCategoryForm.controls.title.pristine && createCategoryForm.controls.title.invalid) }">
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createCategoryForm.controls.title.errors) || (!createCategoryForm.controls.title.pristine && createCategoryForm.controls.title.invalid)">
+                        <div *ngIf="createCategoryForm.controls.title.errors.required">Title is required</div>
+                    </div>
+                    <textarea type="text" [formControlName]="'description'" style="width: 100%; margin-top: 5px" placeholder="Description"></textarea>
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createCategoryForm.controls.description.errors) || (!createCategoryForm.controls.description.pristine && createCategoryForm.controls.description.invalid)">
+                        <div *ngIf="createCategoryForm.controls.description.errors.required">Description is required</div>
+                    </div>
+                    <div>
+                        <div style="margin-top: 5px" class="float-right">
+                            <button (click)="discard()" class="btnDiscard">Discard</button>
+                            <button class="btnCreatecategory">Create</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

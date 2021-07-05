@@ -1,0 +1,7 @@
+.box {
+    background-color: wheat;
+    border-radius: 8px;
+    padding: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}

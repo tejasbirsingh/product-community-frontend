@@ -1,0 +1,36 @@
+<!-- Display Questions-->
+<div class="row question" *ngFor="let question of questions">
+    <app-vote-button [question]="question" [ngStyle]="{'background-color':question?.closed ? '#F08080' : '#90EE90'}"></app-vote-button>
+    <!-- Section to Display Question Information-->
+    <div class="col-md-11">
+        <span class="category-info">
+      <span class="category-text"><a class="questionurl" routerLink="">{{question?.categoryName}}</a></span>
+        <span> . {{question?.duration}}</span>
+
+        <span class="pl-4"> Product Id: {{question.productId}}</span>
+        </span>
+        <span class="pl-4 close" *ngIf="question?.closed; else open">The question is closed</span>
+        <ng-template #open>
+            <span class="pl-4 open">The question is open</span>
+        </ng-template>
+        <hr />
+        <div class="question-title">
+            <a class="questionname" href="{{question?.url}}">{{question?.questionName}}</a>
+        </div>
+        <div>
+            <p class="question-text pt-2" [innerHtml]="question?.description.slice(0,100)"></p>
+        </div>
+        <hr />
+        <span class="row justify-content-between">
+    <span class="col-6">  <a class="btnCommments  " role="button ">
+      <fa-icon [icon]="faComments "></fa-icon>
+      Answers({{question.commentCount}})
+    </a>
+    <button class="login  " (click)="goToQuestion(question.id) ">
+      View question
+    </button></span>
+        <span class="col-md-2 "> Asked by <a class="username " routerLink="/user/{{question.userName}} ">{{question.userName}}</a></span>
+
+        </span>
+    </div>
+</div>

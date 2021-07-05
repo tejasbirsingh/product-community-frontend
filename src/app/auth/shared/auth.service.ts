@@ -35,7 +35,6 @@ export class AuthService {
         this.localStorage.store('username', data.username);
         this.localStorage.store('refreshToken', data.refreshToken);
         this.localStorage.store('expiresAt', data.expiresAt);
-
         this.loggedIn.emit(true);
         this.username.emit(data.username);
         return true;
@@ -72,10 +71,13 @@ export class AuthService {
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
   }
-
+  getTotalUsers(): Observable<number> {
+    return this.httpClient.get<number>('http://localhost:8080/api/auth/total-users');
+  }
   getUserName() {
     return this.localStorage.retrieve('username');
   }
+
   getRefreshToken() {
     return this.localStorage.retrieve('refreshToken');
   }

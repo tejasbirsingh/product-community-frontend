@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="wlc">
+        <h3>Welcome <b>{{name}}</b>.<br /> You have asked questions <b>{{postLength}}</b> time(s) and answered
+            <b>{{commentLength}}</b> time(s). You can check your post and comment history below.</h3>
+    </div>
+    <hr />
+    <div class="comments">
+        Your Posts:
+    </div>
+    <app-question-tile [questions]="questions"></app-question-tile>
+    <hr />
+    <div class="comments">
+        Your Comments:
+    </div>
+    <div *ngFor="let comment of comments">
+        <div class="comment">
+            <div class="username">
+                <a class="username" routerLink="/user/comment.username">{{comment.userName}}</a>
+            </div>
+            <div class="text">
+                {{comment.duration}}
+            </div>
+            <b class="text">{{comment.text}}</b>
+        </div>
+        <hr />
+    </div>
+</div>

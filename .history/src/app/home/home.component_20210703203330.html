@@ -1,0 +1,28 @@
+<div class="product-body">
+    <div class="container-fluid">
+        <div class="row box">
+            <div class="col-md-3">
+                <fa-icon [icon]="faQues"></fa-icon>
+                Total Questions: {{totalQues ? totalQues : 0}}
+            </div>
+            <div class="col-md-3">
+                Closed Questions: {{numClosedQues ? numClosedQues : 0}}</div>
+            <div class="col-md-3">Open Questions: {{numOpenQues? numOpenQues : 0}}</div>
+            <div class="col-md-3">
+                <fa-icon [icon]="faUsers"></fa-icon>
+                Users: {{totalUsers ? totalUsers : 0}}</div>
+        </div>
+
+        <div class="row">
+            <hr />
+
+            <div class="col-md-9">
+                <app-question-tile [questions]="questions"></app-question-tile>
+            </div>
+            <div class="col-md-3">
+                <app-side-bar></app-side-bar>
+                <app-category-side-bar></app-category-side-bar>
+            </div>
+        </div>
+    </div>
+</div>

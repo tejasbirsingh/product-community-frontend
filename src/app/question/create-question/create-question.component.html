@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="row">
+        <hr />
+        <div class="create-question-container  col-md-10">
+            <form class="question-form" [formGroup]="createQuestionForm" (ngSubmit)="createQuestion()">
+                <div class="form-group">
+                    <div class="create-question-heading ">Raise Question</div>
+                    <hr />
+                    <input type="text" [formControlName]="'questionName'" class="form-control" style="margin-top: 5px" placeholder="Title*" [ngClass]="{ 'is-invalid': (isFormSubmitted && createQuestionForm.controls.questionName.errors) || (!createQuestionForm.controls.questionName.pristine && createQuestionForm.controls.questionName.invalid) }">
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createQuestionForm.controls.questionName.errors) || (!createQuestionForm.controls.questionName.pristine && createQuestionForm.controls.questionName.invalid)">
+                        <div *ngIf="createQuestionForm.controls.questionName.errors.required">Title is required</div>
+                    </div>
+                    <input type="text" class="form-control" [formControlName]="'url'" style="margin-top: 5px" placeholder="URL*" [ngClass]="{ 'is-invalid': (isFormSubmitted && createQuestionForm.controls.url.errors) || (!createQuestionForm.controls.url.pristine && createQuestionForm.controls.url.invalid) }">
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createQuestionForm.controls.url.errors) || (!createQuestionForm.controls.url.pristine && createQuestionForm.controls.url.invalid)">
+                        <div *ngIf="createQuestionForm.controls.url.errors.required">URL is required</div>
+                    </div>
+                    <input type="text" [formControlName]="'productId'" class="form-control" style="margin-top: 5px" placeholder="Product Id*" [ngClass]="{ 'is-invalid': (isFormSubmitted && createQuestionForm.controls.productId.errors) || (!createQuestionForm.controls.productId.pristine && createQuestionForm.controls.productId.invalid) }">
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createQuestionForm.controls.productId.errors) || (!createQuestionForm.controls.productId.pristine && createQuestionForm.controls.productId.invalid)">
+                        <div *ngIf="createQuestionForm.controls.productId.errors.required">Product Id is required</div>
+                    </div>
+                    <select class="form-control" style="margin-top: 10px" [formControlName]="'categoryName'" required [ngClass]="{ 'is-invalid': (isFormSubmitted && createQuestionForm.controls.categoryName.errors) || (!createQuestionForm.controls.categoryName.pristine && createQuestionForm.controls.categoryName.invalid) }">
+            <option value="" selected disabled>Select Category*</option>
+            <option *ngFor="let category of categories">{{category.name}}</option>
+          </select>
+                    <div class="invalid-feedback" *ngIf="(isFormSubmitted && createQuestionForm.controls.categoryName.errors) || (!createQuestionForm.controls.categoryName.pristine && createQuestionForm.controls.categoryName.invalid)">
+                        <div *ngIf="createQuestionForm.controls.categoryName.errors.required">Category is required</div>
+                    </div>
+                    <editor [formControlName]="'description'" [init]="{
+                        height: 500,
+                        menubar: false,
+                        plugins: [
+                          'advlist autolink lists link image charmap print preview anchor',
+                          'searchreplace visualblocks code fullscreen',
+                          'insertdatetime media table paste code help wordcount'
+                        ],
+                        toolbar:
+                          'undo redo | formatselect | bold italic backcolor | \
+                          alignleft aligncenter alignright alignjustify | \
+                          bullist numlist outdent indent | removeformat | help'
+                      }"></editor>
+                    <span>
+            <div class="float-right">
+              <button (click)="discardQuestion()" class="btnDiscard">DISCARD</button>
+              <button class="btnCreateQuestion">Post Question</button>
+            </div>
+          </span>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
