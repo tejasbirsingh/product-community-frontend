@@ -24,8 +24,10 @@
                         <p class="question-text pt-2" [innerHtml]="question?.description"> </p>
                     </div>
                     <br>
-                    <button class="btn btn-warning float-right m-2" (click)="editQuestion() ">EDIT</button>
+                    <div *ngIf="question?.userName == userName">
+                        <button class="btn btn-warning float-right m-2" (click)="editQuestion() ">EDIT</button>
 
+                    </div>
                     <div *ngIf="question?.closed==false && userName!=undefined">
 
                         <form [formGroup]="commentForm" (ngSubmit)="questionComment()">
