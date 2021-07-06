@@ -1,6 +1,6 @@
 <div class="container  mt-10">
     <form (submit)="search(loginForm)" #loginForm="ngForm">
-        <mat-card>
+        <mat-card class="box">
             <mat-form-field>
                 <input class="inp" matInput title="Search" name="searchtext" ngModel type="text" placeholder="Search" #searchtext="ngModel" required>
                 <mat-error *ngIf="searchtext.invalid">Please enter something to search!.</mat-error>
@@ -9,15 +9,15 @@
 
             <mat-form-field>
                 <mat-select class="inp" required ngModel #criteria="ngModel" name="criteria" [(value)]="selectedCriteria" placeholder="Search By">
-                    <mat-option [value]="1">Username</mat-option>
-                    <mat-option [value]="2">Category</mat-option>
-                    <mat-option [value]="3">Product ID</mat-option>
+                    <mat-option class="sel" [value]="1">Username</mat-option>
+                    <mat-option class="sel" [value]="2">Category</mat-option>
+                    <mat-option class="sel" [value]="3">Product ID</mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-error *ngIf="criteria.invalid && criteria.touched">Please select a criteria!</mat-error>
 
             <!-- ----------------------------------------------------------------------------- -->
-            <button class="btn btn-success " mat-raised-button type="submit">Search</button>
+            <button class="btn btn-primary " mat-raised-button type="submit">Search</button>
         </mat-card>
         <h2 *ngIf="!questions">No Search Results</h2>
         <app-question-tile [questions]="questions"></app-question-tile>

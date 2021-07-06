@@ -56,7 +56,7 @@ export class CommentVoteButtonComponent implements OnInit {
     this.voteService.commentVote(this.votePayload).subscribe(() => {
       this.updateVoteDetails();
     }, error => {
-      this.toastr.error(error.error.message);
+      this.toastr.error("You can't vote twice!");
       throwError(error);
     });
   }

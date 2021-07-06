@@ -71,6 +71,7 @@ export class AuthService {
     this.localStorage.clear('refreshToken');
     this.localStorage.clear('expiresAt');
   }
+  
   getTotalUsers(): Observable<number> {
     return this.httpClient.get<number>('http://localhost:8080/api/auth/total-users');
   }

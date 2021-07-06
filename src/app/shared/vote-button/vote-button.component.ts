@@ -56,7 +56,8 @@ export class VoteButtonComponent implements OnInit {
     this.voteService.vote(this.votePayload).subscribe(() => {
       this.updateVoteDetails();
     }, error => {
-      this.toastr.error(error.error.message);
+      // it will display toast on top right side
+      this.toastr.error("You can't vote twice!");
       throwError(error);
     });
   }

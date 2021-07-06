@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row">
+        <hr />
+
+        <div class="col-md-9 col-sm-12">
+            <div class="row question">
+                <div class="col-md-1 col-sm-12">
+                    <app-vote-button [question]="question"></app-vote-button>
+                </div>
+                <div class="col-md-11">
+                    <span>
+                        <span class="text category-text"><a class="question-url" href="">Category:
+                                {{question?.categoryName}}</a></span>
+                    <span class="test"> . Asked
+                            <span> {{question?.duration}} </span> by
+                    <a class="username" href="">{{question?.userName}}</a>
+                    <span class="test pl-4">Product ID: {{question?.productId}}</span>
+                    </span>
+
+                    </span>
+                    <hr />
+                    <a routerLink="question.url" class="question-title">{{question?.questionName}}</a>
+                    <div>
+                        <p class="question-text pt-2" [innerHtml]="question?.description"> </p>
+                    </div>
+                    <br>
+                    <button class="btn btn-warning float-right" (click)="editQuestion(question.id) ">EDIT</button>
+
+                    <div *ngIf="question?.closed==false && userName!=undefined">
+
+                        <form [formGroup]="commentForm" (ngSubmit)="questionComment()">
+                            <div class="form-group">
+                                <textarea class="form-control" [formControlName]="'text'" placeholder="Write your answer here."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary float-right cm">Answer</button>
+                        </form>
+
+                    </div>
+                    <br>
+                    <br>
+                    <div *ngFor="let comment of comments">
+
+                        <div class="align-items-center row">
+                            <div class="col-md-1 col-2">
+                                <app-comment-vote-button [comment]="comment"></app-comment-vote-button>
+                            </div>
+                            <div class="col-md-11 col-8">
+                                <div class="comment">
+
+                                    <div class="row justify-content-between ">
+                                        <div class="col-7">
+                                            <fa-icon class="col-md-1 " [icon]="faUser"></fa-icon>
+                                            <a class="username col-md-6" routerLink="/user/comment.username">{{comment.userName}}</a></div>
+                                        <!-- --------------------------------------------------------- -->
+                                        <!---------- Answer accepting or unaccepting logic -------------->
+                                        <div class="col-md-5" *ngIf="question.userName == userName">
+                                            <div *ngIf="question?.closed==false ||  comment?.id == question?.answerId">
+                                                <button class="btna" (click)="closeQuestion(comment.id)">
+                                                    <div *ngIf="question?.closed==false; else unaccept" class='accept'>
+                                                        Accept</div>
+                                                    <ng-template #unaccept >
+                                                        <div class="unaccept">Unaccept</div>
+                                                    </ng-template>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- --------------------------------------------------------- -->
+                                    </div>
+                                    <div>
+                                        <p class="text">{{comment?.duration}}</p>
+                                    </div>
+                                    <b class="pl-2">{{comment?.text}}</b>
+
+                                </div>
+                            </div>
+                        </div>
+                        <hr />
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <app-side-bar></app-side-bar>
+            <app-category-side-bar></app-category-side-bar>
+        </div>
+    </div>
+</div>

@@ -1,6 +1,16 @@
+.box {
+    background-color: #b8c6db;
+    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+}
+
 mat-form-field {
     width: 100%;
     color: black;
+}
+
+.sel {
+    color: black;
+    background-color: white;
 }
 
 .inp {
@@ -10,4 +20,12 @@ mat-form-field {
 
 .mat-card {
     background-color: rgb(81, 81, 194)
+}
+
+ ::ng-deep .mat-input-element::placeholder {
+    color: orange;
+}
+
+ ::ng-deep .mat-form-field-appearance-legacy .mat-form-field-label {
+    color: black;
 }

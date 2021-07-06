@@ -24,6 +24,8 @@
                         <p class="question-text pt-2" [innerHtml]="question?.description"> </p>
                     </div>
                     <br>
+                    <button class="btn btn-warning float-right m-2" (click)="editQuestion() ">EDIT</button>
+
                     <div *ngIf="question?.closed==false && userName!=undefined">
 
                         <form [formGroup]="commentForm" (ngSubmit)="questionComment()">
@@ -46,12 +48,15 @@
                                 <div class="comment">
 
                                     <div class="row justify-content-between ">
-                                        <div class="col-7">
+                                        <div class="col-5">
                                             <fa-icon class="col-md-1 " [icon]="faUser"></fa-icon>
-                                            <a class="username col-md-6" routerLink="/user/comment.username">{{comment.userName}}</a></div>
+                                            <a class="username col-md-5" routerLink="/user/comment.username">{{comment.userName}}</a></div>
+                                        <p class="col-md-4"> {{comment?.createdDate}}</p>
+
+
                                         <!-- --------------------------------------------------------- -->
                                         <!---------- Answer accepting or unaccepting logic -------------->
-                                        <div class="col-md-5" *ngIf="question.userName == userName">
+                                        <div class="col-md-2" *ngIf="question?.userName == userName">
                                             <div *ngIf="question?.closed==false ||  comment?.id == question?.answerId">
                                                 <button class="btna" (click)="closeQuestion(comment.id)">
                                                     <div *ngIf="question?.closed==false; else unaccept" class='accept'>
@@ -64,9 +69,7 @@
                                         </div>
                                         <!-- --------------------------------------------------------- -->
                                     </div>
-                                    <div>
-                                        <p class="text">{{comment?.duration}}</p>
-                                    </div>
+
                                     <b class="pl-2">{{comment?.text}}</b>
 
                                 </div>
