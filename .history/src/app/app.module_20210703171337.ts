@@ -20,7 +20,7 @@ import { SideBarComponent } from './shared/side-bar/side-bar.component';
 import { EditorModule } from '@tinymce/tinymce-angular';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { UserProfileComponent } from './auth/user-profile/user-profile.component';
-import { CommentVoteButtonComponent } from './shared/comment-vote-button/comment-vote-button.component';
+import { AnswerVoteButtonComponent } from './shared/answer-vote-button/answer-vote-button.component';
 import { SearchQuesComponent } from './search-ques/search-ques.component';
 import { MatInputModule } from '@angular/material/input';
 import { MatCardModule } from '@angular/material/card';
@@ -51,7 +51,7 @@ import { QuestionTileComponent } from './shared/question-tile/question-tile.comp
     ViewQuestionComponent,
     UserProfileComponent,
     CategoryQuestionsComponent,
-    CommentVoteButtonComponent,
+    AnswerVoteButtonComponent,
     SearchQuesComponent
   ],
   imports: [

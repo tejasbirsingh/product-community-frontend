@@ -1,23 +1,23 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
-import { CommentVotePayload } from './comment-vote-payload';
+import { AnswerVotePayload } from './answer-vote-payload';
 import { VoteType } from './vote-type';
 import { VoteService } from '../vote.service';
 import { AuthService } from 'src/app/auth/shared/auth.service';
 import { throwError } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { CommentPayload } from 'src/app/comment/comment.payload';
-import { CommentService } from 'src/app/comment/comment.service';
+import { AnswerPayload } from 'src/app/answer/answer.payload';
+import { AnswerService } from 'src/app/answer/answer.service';
 
 @Component({
-  selector: 'app-comment-vote-button' ,
-  templateUrl: './comment-vote-button.component.html',
-  styleUrls: ['./comment-vote-button.component.css']
+  selector: 'app-answer-vote-button' ,
+  templateUrl: './answer-vote-button.component.html',
+  styleUrls: ['./answer-vote-button.component.css']
 })
-export class CommentVoteButtonComponent implements OnInit {
+export class AnswerVoteButtonComponent implements OnInit {
 
-  @Input() comment: CommentPayload;
-  votePayload: CommentVotePayload;
+  @Input() answer: AnswerPayload;
+  votePayload: AnswerVotePayload;
   faArrowUp = faArrowUp;
   faArrowDown = faArrowDown;
   upvoteColor: string;
@@ -26,11 +26,11 @@ export class CommentVoteButtonComponent implements OnInit {
 
   constructor(private voteService: VoteService,
     private authService: AuthService,
-    private commentService: CommentService, private toastr: ToastrService) {
+    private answerService: AnswerService, private toastr: ToastrService) {
 
     this.votePayload = {
       voteType: undefined,
-      commentId: undefined
+      answerId: undefined
     }
     this.authService.loggedIn.subscribe((data: boolean) => this.isLoggedIn = data);
   }
@@ -39,21 +39,21 @@ export class CommentVoteButtonComponent implements OnInit {
     this.updateVoteDetails();
   }
 
-  upvoteComment() {
+  upvoteAnswer() {
     this.votePayload.voteType = VoteType.UPVOTE;
     this.vote();
     this.downvoteColor = '';
   }
 
-  downvoteComment() {
+  downvoteAnswer() {
     this.votePayload.voteType = VoteType.DOWNVOTE;
     this.vote();
     this.upvoteColor = '';
   }
 
   private vote() {
-    this.votePayload.commentId = this.comment.id;
-    this.voteService.commentVote(this.votePayload).subscribe(() => {
+    this.votePayload.answerId = this.answer.id;
+    this.voteService.answerVote(this.votePayload).subscribe(() => {
       this.updateVoteDetails();
     }, error => {
       this.toastr.error("You can't vote twice!");
@@ -62,8 +62,8 @@ export class CommentVoteButtonComponent implements OnInit {
   }
 
   private updateVoteDetails() {
-    this.commentService.getComment(this.comment.id).subscribe(comment => {
-      this.comment = comment;
+    this.answerService.getAnswer(this.answer.id).subscribe(answer => {
+      this.answer = answer;
     });
   }
 }

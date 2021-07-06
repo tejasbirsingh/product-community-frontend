@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CommentService } from 'src/app/comment/comment.service';
-import { CommentPayload } from 'src/app/comment/comment.payload';
+import { AnswerService } from 'src/app/answer/answer.service';
+import { AnswerPayload } from 'src/app/answer/answer.payload';
 import { QuestionModel } from 'src/app/shared/question-model';
 import { QuestionService } from 'src/app/shared/question.service';
 
@@ -13,21 +13,21 @@ import { QuestionService } from 'src/app/shared/question.service';
 export class UserProfileComponent implements OnInit {
   name: string;
   posts: QuestionModel[];
-  comments: CommentPayload[];
+  answers: AnswerPayload[];
   postLength: number;
-  commentLength: number;
+  answerLength: number;
 
   constructor(private activatedRoute: ActivatedRoute, private questionService: QuestionService,
-    private commentService: CommentService) {
+    private answerService: AnswerService) {
     this.name = this.activatedRoute.snapshot.params.name;
 
     this.questionService.getAllQuestionsByUser(this.name).subscribe(data => {
       this.posts = data;
       this.postLength = data.length;
     });
-    this.commentService.getAllCommentsByUser(this.name).subscribe(data => {
-      this.comments = data;
-      this.commentLength = data.length;
+    this.answerService.getAllAnswersByUser(this.name).subscribe(data => {
+      this.answers = data;
+      this.answerLength = data.length;
     });
   }
 

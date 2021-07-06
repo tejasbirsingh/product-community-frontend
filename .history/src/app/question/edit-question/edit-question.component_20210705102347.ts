@@ -34,7 +34,7 @@ export class EditQuestionComponent implements OnInit {
       userName: '',
       upVote: undefined,
       downVote: undefined,
-      commentCount: 0,
+      answerCount: 0,
       duration: "",
       answerId: 0,
       closed: undefined

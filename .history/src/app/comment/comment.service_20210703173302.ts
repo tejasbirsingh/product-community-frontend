@@ -1,31 +1,31 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { CommentPayload } from './comment.payload';
+import { AnswerPayload } from './answer.payload';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CommentService {
+export class AnswerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getAllCommentsForQuestion(postId: number): Observable<CommentPayload[]> {
-    return this.httpClient.get<CommentPayload[]>('http://localhost:8080/api/comments/by-question/' + postId);
+  getAllAnswersForQuestion(postId: number): Observable<AnswerPayload[]> {
+    return this.httpClient.get<AnswerPayload[]>('http://localhost:8080/api/answers/by-question/' + postId);
   }
 
-  postComment(commentPayload: CommentPayload): Observable<any> {
-    return this.httpClient.post<any>('http://localhost:8080/api/comments/', commentPayload);
+  postAnswer(answerPayload: AnswerPayload): Observable<any> {
+    return this.httpClient.post<any>('http://localhost:8080/api/answers/', answerPayload);
   }
 
-  getAllCommentsByUser(name: string) {
-    return this.httpClient.get<CommentPayload[]>('http://localhost:8080/api/comments/by-user/' + name);
+  getAllAnswersByUser(name: string) {
+    return this.httpClient.get<AnswerPayload[]>('http://localhost:8080/api/answers/by-user/' + name);
   }
-  getComment(commentId: number) {
-    return this.httpClient.get<CommentPayload>('http://localhost:8080/api/comments/' + commentId);
+  getAnswer(answerId: number) {
+    return this.httpClient.get<AnswerPayload>('http://localhost:8080/api/answers/' + answerId);
   }
-  acceptAnswer(commentId: number) {
-    return this.httpClient.get<any>('http://localhost:8080/api/comments/accept/' + commentId);
+  acceptAnswer(answerId: number) {
+    return this.httpClient.get<any>('http://localhost:8080/api/answers/accept/' + answerId);
   }
   
 

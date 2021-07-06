@@ -11,29 +11,37 @@ import { QuestionService } from '../shared/question.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-faUsers = faUsers;
-faQues = faQuestion;
+  faUsers = faUsers;
+  faQues = faQuestion;
   questions: Array<QuestionModel> = [];
-  numClosedQues : number;
-  numOpenQues:number;
-  totalQues :number;
-  totalUsers:number;
+  numClosedQues: number;
+  numOpenQues: number;
+  totalQues: number;
+  totalUsers: number;
 
-  constructor(private questionService: QuestionService, private authService :AuthService) {
+  constructor(private questionService: QuestionService, private authService: AuthService) {
     this.questionService.getAllQuestions().subscribe(post => {
       this.questions = post;
       this.totalQues = post.length;
-      this.questionService.getNumberClosedQues().subscribe(num =>{
+
+      this.questionService.getNumberClosedQues().subscribe(num => {
         this.numClosedQues = num;
-        this.numOpenQues = this.totalQues - num; 
+        this.numOpenQues = this.totalQues - num;
       })
-    });
-    this.authService.getTotalUsers().subscribe(users=>{
+    },
+      (err) => {
+
+      });
+      
+    this.authService.getTotalUsers().subscribe(users => {
       this.totalUsers = users;
-    });
-  
-  
-  } 
+    },
+      (err) => {
+
+      });
+
+
+  }
 
   ngOnInit(): void {
   }

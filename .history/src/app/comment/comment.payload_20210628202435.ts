@@ -1,4 +1,4 @@
-export class CommentPayload{
+export class AnswerPayload{
     id:number;
     text: string;
     postId: number;

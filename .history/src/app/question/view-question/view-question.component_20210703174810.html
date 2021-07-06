@@ -26,7 +26,7 @@
 
                     <div *ngIf="question?.closed==false">
 
-                        <form [formGroup]="commentForm" (ngSubmit)="questionComment()">
+                        <form [formGroup]="answerForm" (ngSubmit)="questionAnswer()">
                             <div class="form-group">
                                 <textarea class="form-control" [formControlName]="'text'" placeholder="Write your answer here."></textarea>
                             </div>
@@ -35,24 +35,24 @@
 
                     </div>
                     <br>
-                    <div *ngFor="let comment of comments">
+                    <div *ngFor="let answer of answers">
 
                         <div class="align-items-center row">
                             <div class="col-md-1 col-2">
-                                <app-comment-vote-button [comment]="comment"></app-comment-vote-button>
+                                <app-answer-vote-button [answer]="answer"></app-answer-vote-button>
                             </div>
                             <div class="col-md-11 col-8">
-                                <div class="comment">
+                                <div class="answer">
 
                                     <div class="row justify-content-between ">
                                         <div class="col-7">
                                             <fa-icon class="col-md-1 " [icon]="faUser"></fa-icon>
-                                            <a class="username col-md-6" routerLink="/user/comment.username">{{comment.userName}}</a></div>
+                                            <a class="username col-md-6" routerLink="/user/answer.username">{{answer.userName}}</a></div>
                                         <!-- --------------------------------------------------------- -->
                                         <!---------- Answer accepting or unaccepting logic -------------->
                                         <div class="col-md-5" *ngIf="question.userName == userName">
-                                            <div *ngIf="question?.closed==false ||  comment?.id == question?.answerId">
-                                                <button class="btna" (click)="closeQuestion(comment.id)">
+                                            <div *ngIf="question?.closed==false ||  answer?.id == question?.answerId">
+                                                <button class="btna" (click)="closeQuestion(answer.id)">
                                                     <div *ngIf="question?.closed==false; else unaccept" class='accept'>
                                                         Accept</div>
                                                     <ng-template #unaccept >
@@ -64,9 +64,9 @@
                                         <!-- --------------------------------------------------------- -->
                                     </div>
                                     <div>
-                                        <p class="text">{{comment?.duration}}</p>
+                                        <p class="text">{{answer?.duration}}</p>
                                     </div>
-                                    <b class="pl-2">{{comment?.text}}</b>
+                                    <b class="pl-2">{{answer?.text}}</b>
 
                                 </div>
                             </div>

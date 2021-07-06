@@ -4630,7 +4630,7 @@
                 "postcss-calc": "^7.0.1",
                 "postcss-colormin": "^4.0.3",
                 "postcss-convert-values": "^4.0.1",
-                "postcss-discard-comments": "^4.0.2",
+                "postcss-discard-answers": "^4.0.2",
                 "postcss-discard-duplicates": "^4.0.2",
                 "postcss-discard-empty": "^4.0.1",
                 "postcss-discard-overridden": "^4.0.1",
@@ -6644,9 +6644,9 @@
             "integrity": "sha1-wc56MWjIxmFAM6S194d/OyJfnDg=",
             "dev": true
         },
-        "node_modules/html-comment-regex": {
+        "node_modules/html-answer-regex": {
             "version": "1.1.2",
-            "resolved": "https://registry.npmjs.org/html-comment-regex/-/html-comment-regex-1.1.2.tgz",
+            "resolved": "https://registry.npmjs.org/html-answer-regex/-/html-answer-regex-1.1.2.tgz",
             "integrity": "sha512-P+M65QY2JQ5Y0G9KKdlDpo0zK+/OHptU5AaBwUfAIDJZk1MYf32Frm84EcOytfJE0t5JvkAnKlmjsXDnWzCJmQ==",
             "dev": true
         },
@@ -7498,7 +7498,7 @@
             "integrity": "sha512-gi4iHK53LR2ujhLVVj+37Ykh9GLqYHX6JOVXbLAucaG/Cqw9xwdFOjDM2qeifLs1sF1npXXFvDu0r5HNgCMrzQ==",
             "dev": true,
             "dependencies": {
-                "html-comment-regex": "^1.1.0"
+                "html-answer-regex": "^1.1.0"
             },
             "engines": {
                 "node": ">=4"
@@ -10292,9 +10292,9 @@
             "integrity": "sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==",
             "dev": true
         },
-        "node_modules/postcss-discard-comments": {
+        "node_modules/postcss-discard-answers": {
             "version": "4.0.2",
-            "resolved": "https://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-4.0.2.tgz",
+            "resolved": "https://registry.npmjs.org/postcss-discard-answers/-/postcss-discard-answers-4.0.2.tgz",
             "integrity": "sha512-RJutN259iuRf3IW7GZyLM5Sw4GLTOH8FmsXBnv8Ab/Tc2k4SR4qbV4DNbyyY4+Sjo362SyDmW2DQ7lBSChrpkg==",
             "dev": true,
             "dependencies": {
@@ -14838,7 +14838,7 @@
                 "deep-extend": "^0.6.0",
                 "ini": "~1.3.0",
                 "minimist": "^1.2.0",
-                "strip-json-comments": "~2.0.1"
+                "strip-json-answers": "~2.0.1"
             },
             "bin": {
                 "rc": "cli.js"
@@ -14956,7 +14956,7 @@
                 "node": ">=0.10.0"
             }
         },
-        "node_modules/watchpack/node_modules/fsevents/node_modules/strip-json-comments": {
+        "node_modules/watchpack/node_modules/fsevents/node_modules/strip-json-answers": {
             "version": "2.0.1",
             "dev": true,
             "inBundle": true,
@@ -15863,7 +15863,7 @@
                 "deep-extend": "^0.6.0",
                 "ini": "~1.3.0",
                 "minimist": "^1.2.0",
-                "strip-json-comments": "~2.0.1"
+                "strip-json-answers": "~2.0.1"
             },
             "bin": {
                 "rc": "cli.js"
@@ -15981,7 +15981,7 @@
                 "node": ">=0.10.0"
             }
         },
-        "node_modules/webpack-dev-server/node_modules/fsevents/node_modules/strip-json-comments": {
+        "node_modules/webpack-dev-server/node_modules/fsevents/node_modules/strip-json-answers": {
             "version": "2.0.1",
             "dev": true,
             "inBundle": true,
@@ -20657,7 +20657,7 @@
                 "postcss-calc": "^7.0.1",
                 "postcss-colormin": "^4.0.3",
                 "postcss-convert-values": "^4.0.1",
-                "postcss-discard-comments": "^4.0.2",
+                "postcss-discard-answers": "^4.0.2",
                 "postcss-discard-duplicates": "^4.0.2",
                 "postcss-discard-empty": "^4.0.1",
                 "postcss-discard-overridden": "^4.0.1",
@@ -22373,9 +22373,9 @@
             "integrity": "sha1-wc56MWjIxmFAM6S194d/OyJfnDg=",
             "dev": true
         },
-        "html-comment-regex": {
+        "html-answer-regex": {
             "version": "1.1.2",
-            "resolved": "https://registry.npmjs.org/html-comment-regex/-/html-comment-regex-1.1.2.tgz",
+            "resolved": "https://registry.npmjs.org/html-answer-regex/-/html-answer-regex-1.1.2.tgz",
             "integrity": "sha512-P+M65QY2JQ5Y0G9KKdlDpo0zK+/OHptU5AaBwUfAIDJZk1MYf32Frm84EcOytfJE0t5JvkAnKlmjsXDnWzCJmQ==",
             "dev": true
         },
@@ -23060,7 +23060,7 @@
             "integrity": "sha512-gi4iHK53LR2ujhLVVj+37Ykh9GLqYHX6JOVXbLAucaG/Cqw9xwdFOjDM2qeifLs1sF1npXXFvDu0r5HNgCMrzQ==",
             "dev": true,
             "requires": {
-                "html-comment-regex": "^1.1.0"
+                "html-answer-regex": "^1.1.0"
             }
         },
         "is-symbol": {
@@ -25382,9 +25382,9 @@
                 }
             }
         },
-        "postcss-discard-comments": {
+        "postcss-discard-answers": {
             "version": "4.0.2",
-            "resolved": "https://registry.npmjs.org/postcss-discard-comments/-/postcss-discard-comments-4.0.2.tgz",
+            "resolved": "https://registry.npmjs.org/postcss-discard-answers/-/postcss-discard-answers-4.0.2.tgz",
             "integrity": "sha512-RJutN259iuRf3IW7GZyLM5Sw4GLTOH8FmsXBnv8Ab/Tc2k4SR4qbV4DNbyyY4+Sjo362SyDmW2DQ7lBSChrpkg==",
             "dev": true,
             "requires": {
@@ -29219,7 +29219,7 @@
                                 "deep-extend": "^0.6.0",
                                 "ini": "~1.3.0",
                                 "minimist": "^1.2.0",
-                                "strip-json-comments": "~2.0.1"
+                                "strip-json-answers": "~2.0.1"
                             }
                         },
                         "readable-stream": {
@@ -29311,7 +29311,7 @@
                                 "ansi-regex": "^2.0.0"
                             }
                         },
-                        "strip-json-comments": {
+                        "strip-json-answers": {
                             "version": "2.0.1",
                             "bundled": true,
                             "dev": true,
@@ -30150,7 +30150,7 @@
                                 "deep-extend": "^0.6.0",
                                 "ini": "~1.3.0",
                                 "minimist": "^1.2.0",
-                                "strip-json-comments": "~2.0.1"
+                                "strip-json-answers": "~2.0.1"
                             }
                         },
                         "readable-stream": {
@@ -30242,7 +30242,7 @@
                                 "ansi-regex": "^2.0.0"
                             }
                         },
-                        "strip-json-comments": {
+                        "strip-json-answers": {
                             "version": "2.0.1",
                             "bundled": true,
                             "dev": true,

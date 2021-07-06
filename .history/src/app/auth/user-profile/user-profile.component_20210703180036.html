@@ -1,26 +1,26 @@
 <div class="container">
     <div class="wlc">
         <h3>Welcome <b>{{name}}</b>.<br /> You have asked questions <b>{{postLength}}</b> time(s) and answered
-            <b>{{commentLength}}</b> time(s). You can check your question and answer history below.</h3>
+            <b>{{answerLength}}</b> time(s). You can check your question and answer history below.</h3>
     </div>
     <hr />
-    <div class="comments">
+    <div class="answers">
         Your Questions:
     </div>
     <app-question-tile [questions]="questions"></app-question-tile>
     <hr />
-    <div class="comments">
+    <div class="answers">
         Your Answers:
     </div>
-    <div *ngFor="let comment of comments">
-        <div class="comment">
+    <div *ngFor="let answer of answers">
+        <div class="answer">
             <div class="username">
-                <a class="username" routerLink="/user/comment.username">{{comment.userName}}</a>
+                <a class="username" routerLink="/user/answer.username">{{answer.userName}}</a>
             </div>
             <div class="text">
-                {{comment.duration}}
+                {{answer.duration}}
             </div>
-            <b class="text">{{comment.text}}</b>
+            <b class="text">{{answer.text}}</b>
         </div>
         <hr />
     </div>

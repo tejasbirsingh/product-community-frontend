@@ -8,7 +8,7 @@ export class QuestionModel {
     voteCount: number;
     userName: string;
     categoryName: string;
-    commentCount: number;
+    answerCount: number;
     duration: string;
     upVote: boolean;
     downVote: boolean;
