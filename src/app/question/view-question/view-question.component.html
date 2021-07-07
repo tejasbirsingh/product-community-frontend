@@ -1,11 +1,14 @@
-<div class="container">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+
+<div *ngIf="question!=undefined" class="container">
+
     <div class="row">
         <hr />
 
         <div class="col-md-9 col-sm-12">
             <div class="row question">
                 <div class="col-md-1 col-sm-12">
-                    <app-vote-button [question]="question"></app-vote-button>
+                    <app-vote-button [question]="question" *ngIf="userName!=undefined"></app-vote-button>
                 </div>
                 <div class="col-md-11">
                     <span>
@@ -19,33 +22,48 @@
 
                     </span>
                     <hr />
-                    <a routerLink="question.url" class="question-title">{{question?.questionName}}</a>
+                    <div class="question-title">{{question?.questionName}}</div>
                     <div>
                         <p class="question-text pt-2" [innerHtml]="question?.description"> </p>
                     </div>
+                    <img src="{{question?.url}}" style="display: none" onload="this.style.display=''">
+
                     <br>
                     <div *ngIf="question?.userName == userName">
                         <button class="btn btn-warning float-right m-2" (click)="editQuestion() ">EDIT</button>
 
                     </div>
+
                     <div *ngIf="question?.closed==false && userName!=undefined">
 
                         <form [formGroup]="answerForm" (ngSubmit)="questionAnswer()">
-                            <div class="form-group">
-                                <textarea class="form-control" [formControlName]="'text'" placeholder="Write your answer here."></textarea>
+                            <div class="form-group an">
+                                <editor required [formControlName]="'text'" [init]="{
+                                    height: 200,
+                                    menubar: false,
+                                    plugins: [
+                                      'advlist autolink lists link image charmap print preview anchor',
+                                      'searchreplace visualblocks code fullscreen',
+                                      'insertdatetime media table paste code help wordcount'
+                                    ],
+                                    toolbar:
+                                      'undo redo | formatselect | bold italic backcolor | \
+                                      alignleft aligncenter alignright alignjustify | \
+                                      bullist numlist outdent indent | removeformat | help'
+                                  }"></editor>
+                                <!-- <textarea class="form-control" [formControlName]="'text'" placeholder="Write your answer here."></textarea> -->
                             </div>
                             <button type="submit" class="btn btn-primary float-right cm">Answer</button>
                         </form>
 
                     </div>
-                    <br>
-                    <br>
-                    <br>
+
                     <div *ngFor="let answer of answers">
 
-                        <div class="align-items-center row">
+                        <div class="align-items-center row an">
                             <div class="col-md-1 col-2">
-                                <app-answer-vote-button [answer]="answer"></app-answer-vote-button>
+                                <app-answer-vote-button [answer]="answer" *ngIf="userName!=undefined">
+                                </app-answer-vote-button>
                             </div>
                             <div class="col-md-11 col-8">
                                 <div class="answer">
@@ -53,18 +71,18 @@
                                     <div class="row justify-content-between ">
                                         <div class="col-5">
                                             <fa-icon class="col-md-1 " [icon]="faUser"></fa-icon>
-                                            <a class="username col-md-5" routerLink="/user/answer.username">{{answer.userName}}</a></div>
+                                            <a class="username col-md-5" routerLink="/user/answer.username">{{answer.userName}}</a>
+                                        </div>
                                         <p class="col-md-4"> {{answer?.createdDate}}</p>
 
 
-                                        <!-- --------------------------------------------------------- -->
                                         <!---------- Answer accepting or unaccepting logic -------------->
                                         <div class="col-md-2" *ngIf="question?.userName == userName">
                                             <div *ngIf="question?.closed==false ||  answer?.id == question?.answerId">
                                                 <button class="btna" (click)="closeQuestion(answer.id)">
                                                     <div *ngIf="question?.closed==false; else unaccept" class='accept'>
                                                         Accept</div>
-                                                    <ng-template #unaccept >
+                                                    <ng-template #unaccept>
                                                         <div class="unaccept">Unaccept</div>
                                                     </ng-template>
                                                 </button>
@@ -72,8 +90,11 @@
                                         </div>
                                         <!-- --------------------------------------------------------- -->
                                     </div>
+                                    <div>
+                                        <p class=" answer-text pt-2" [innerHtml]="answer?.text"> </p>
+                                    </div>
 
-                                    <b class="pl-2">{{answer?.text}}</b>
+                                    <!-- <b class="pl-2">{{answer?.text}}</b> -->
 
                                 </div>
                             </div>

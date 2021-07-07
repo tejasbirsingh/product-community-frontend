@@ -12,7 +12,10 @@
 .username:hover {
     color: yellow;
     font-size: 1.8rem;
-    ;
+}
+
+mat-spinner {
+    margin: auto;
 }
 
 .text {

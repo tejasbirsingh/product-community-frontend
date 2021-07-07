@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, Input } from '@angular/core';
 import { QuestionModel } from '../question-model';
-import { faComments } from '@fortawesome/free-solid-svg-icons';
+import { faComments, faLock, faLockOpen } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,7 +10,8 @@ import { Router } from '@angular/router';
   encapsulation: ViewEncapsulation.None,
 })
 export class QuestionTileComponent implements OnInit {
-
+  faLock = faLock;
+  faLockOpen = faLockOpen;
   faComments = faComments;
   @Input() questions: QuestionModel[];
 

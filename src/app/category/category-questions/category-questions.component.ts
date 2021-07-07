@@ -13,14 +13,16 @@ export class CategoryQuestionsComponent implements OnInit {
   id: number;
   questions: QuestionModel[];
   questionLength: number;
+  isLoading = false;
 
   constructor(private activatedRoute: ActivatedRoute, private questionService: QuestionService,private router: Router
    ) {
     this.id = this.activatedRoute.snapshot.params.id;
-
+    this.isLoading = true;
     this.questionService.getAllQuestionsByCategory(this.id).subscribe(data => {
       this.questions = data;
       this.questionLength = data.length;
+      this.isLoading = false;
     });
    
    

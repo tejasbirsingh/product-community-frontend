@@ -25,10 +25,13 @@ export class ViewQuestionComponent implements OnInit {
   answerForm: FormGroup;
   answerPayload: AnswerPayload;
   answers: AnswerPayload[];
+  isLoading = false;
+
 
   constructor(private questionService: QuestionService, private activateRoute: ActivatedRoute,
     private answerService: AnswerService, private router: Router, private authService: AuthService) {
     this.questionId = this.activateRoute.snapshot.params.id;
+    this.isLoading = true;
 
     this.answerForm = new FormGroup({
       text: new FormControl('', Validators.required)
@@ -46,6 +49,7 @@ export class ViewQuestionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     if (this.questionId) {
       this.getQuestionById();
       this.getAnswersForQuestion();
@@ -77,6 +81,7 @@ export class ViewQuestionComponent implements OnInit {
   private getAnswersForQuestion() {
     this.answerService.getAllAnswersForQuestion(this.questionId).subscribe(data => {
       this.answers = data;
+      this.isLoading = false;
     }, error => {
       throwError(error);
     });

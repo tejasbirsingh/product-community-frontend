@@ -17,10 +17,12 @@ export class UserProfileComponent implements OnInit {
   answers: AnswerPayload[];
   postLength: number;
   answerLength: number;
+  isLoading = false;
 
   constructor(private activatedRoute: ActivatedRoute, private questionService: QuestionService,
     private answerService: AnswerService) {
     this.name = this.activatedRoute.snapshot.params.name;
+    this.isLoading = true;
 
     this.questionService.getAllQuestionsByUser(this.name).subscribe(data => {
       this.questions = data;
@@ -29,6 +31,7 @@ export class UserProfileComponent implements OnInit {
     this.answerService.getAllAnswersByUser(this.name).subscribe(data => {
       this.answers = data;
       this.answerLength = data.length;
+      this.isLoading = false;
     });
   }
 

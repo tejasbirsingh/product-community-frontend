@@ -11,8 +11,8 @@ export class AnswerService {
   BACKEND_URL = "http://localhost:8080/api/answers/";
   constructor(private httpClient: HttpClient) { }
 
-  getAllAnswersForQuestion(postId: number): Observable<AnswerPayload[]> {
-    return this.httpClient.get<AnswerPayload[]>(this.BACKEND_URL + 'by-question/' + postId);
+  getAllAnswersForQuestion(questionId: number): Observable<AnswerPayload[]> {
+    return this.httpClient.get<AnswerPayload[]>(this.BACKEND_URL + 'by-question/' + questionId);
   }
 
   postAnswer(answerPayload: AnswerPayload): Observable<any> {

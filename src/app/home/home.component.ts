@@ -18,8 +18,9 @@ export class HomeComponent implements OnInit {
   numOpenQues: number;
   totalQues: number;
   totalUsers: number;
-
+  isLoading = false;
   constructor(private questionService: QuestionService, private authService: AuthService) {
+    this.isLoading = true;
     this.questionService.getAllQuestions().subscribe(post => {
       this.questions = post;
       this.totalQues = post.length;
@@ -35,6 +36,7 @@ export class HomeComponent implements OnInit {
       
     this.authService.getTotalUsers().subscribe(users => {
       this.totalUsers = users;
+      this.isLoading = false;
     },
       (err) => {
 

@@ -9,6 +9,16 @@
     color: black;
 }
 
+mat-spinner {
+    margin: auto;
+}
+
+.answer-text {
+    margin-top: 10px;
+    color: white;
+    font-size: 1rem;
+}
+
 .username:hover {
     color: yellow;
     font-size: 1.8rem;

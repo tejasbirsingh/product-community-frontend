@@ -4,9 +4,12 @@
             <b>{{answerLength}}</b> time(s). You can check your question and answer history below.</h3>
     </div>
     <hr />
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+
     <div class="answers">
         Your Questions:
     </div>
+
     <app-question-tile [questions]="questions"></app-question-tile>
     <hr />
     <div class="answers">
@@ -21,7 +24,9 @@
             <div class="text">
                 {{answer.duration}}
             </div>
-            <b class="text">{{answer.text}}</b>
+            <div>
+                <p class=" answer-text pt-2" [innerHtml]="answer?.text"> </p>
+            </div>
         </div>
         <hr />
     </div>
